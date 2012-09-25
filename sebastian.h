@@ -6,4 +6,6 @@
 
 #include "mystring.h"
 
+int strpar();
+
 #endif	/* _SEBASTIAN_ */
