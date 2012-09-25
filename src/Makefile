@@ -51,7 +51,8 @@ POST_UNINSTALL = :
 bin_PROGRAMS = Sebastian$(EXEEXT)
 subdir = src
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in \
-	$(top_srcdir)/depcomp $(top_srcdir)/mkinstalldirs
+	$(top_srcdir)/depcomp $(top_srcdir)/mkinstalldirs \
+	$(top_srcdir)/ylwrap sebastian.c
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.in
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
@@ -62,7 +63,7 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_Sebastian_OBJECTS = sebastian.$(OBJEXT) lex.yy.$(OBJEXT)
+am_Sebastian_OBJECTS = sebastian.$(OBJEXT) sebastian.$(OBJEXT)
 Sebastian_OBJECTS = $(am_Sebastian_OBJECTS)
 Sebastian_LDADD = $(LDADD)
 DEFAULT_INCLUDES = -I. -I$(top_builddir)
@@ -73,6 +74,8 @@ COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CCLD = $(CC)
 LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
+LEXCOMPILE = $(LEX) $(AM_LFLAGS) $(LFLAGS)
+YLWRAP = $(top_srcdir)/ylwrap
 SOURCES = $(Sebastian_SOURCES)
 DIST_SOURCES = $(Sebastian_SOURCES)
 am__can_run_installinfo = \
@@ -130,8 +133,6 @@ SET_MAKE =
 SHELL = /bin/sh
 STRIP = 
 VERSION = 0.0.1
-YACC = bison -y
-YFLAGS = 
 abs_builddir = /Users/tomoaki/Develop.localized/Sebastian/src
 abs_srcdir = /Users/tomoaki/Develop.localized/Sebastian/src
 abs_top_builddir = /Users/tomoaki/Develop.localized/Sebastian
@@ -174,11 +175,11 @@ target_alias =
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
-Sebastian_SOURCES = sebastian.c lex.yy.c sebastian.h
+Sebastian_SOURCES = sebastian.c sebastian.h sebastian.l
 all: all-am
 
 .SUFFIXES:
-.SUFFIXES: .c .o .obj
+.SUFFIXES: .c .l .o .obj
 $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
@@ -259,7 +260,6 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-include ./$(DEPDIR)/lex.yy.Po
 include ./$(DEPDIR)/sebastian.Po
 
 .c.o:
@@ -275,6 +275,9 @@ include ./$(DEPDIR)/sebastian.Po
 #	source='$<' object='$@' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
 #	$(COMPILE) -c `$(CYGPATH_W) '$<'`
+
+.l.c:
+	$(am__skiplex) $(SHELL) $(YLWRAP) $< $(LEX_OUTPUT_ROOT).c $@ -- $(LEXCOMPILE)
 
 ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	list='$(SOURCES) $(HEADERS) $(LISP) $(TAGS_FILES)'; \
@@ -409,6 +412,7 @@ distclean-generic:
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
+	-rm -f sebastian.c
 clean: clean-am
 
 clean-am: clean-binPROGRAMS clean-generic mostlyclean-am

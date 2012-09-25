@@ -51,7 +51,7 @@ subdir = .
 DIST_COMMON = README $(am__configure_deps) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in $(srcdir)/config.h.in \
 	$(top_srcdir)/configure AUTHORS COPYING ChangeLog INSTALL NEWS \
-	depcomp install-sh missing mkinstalldirs
+	depcomp install-sh missing mkinstalldirs ylwrap
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.in
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
@@ -174,8 +174,6 @@ SET_MAKE =
 SHELL = /bin/sh
 STRIP = 
 VERSION = 0.0.1
-YACC = bison -y
-YFLAGS = 
 abs_builddir = /Users/tomoaki/Develop.localized/Sebastian
 abs_srcdir = /Users/tomoaki/Develop.localized/Sebastian
 abs_top_builddir = /Users/tomoaki/Develop.localized/Sebastian
