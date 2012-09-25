@@ -30,8 +30,8 @@ Kernel configured for up to 4 processors.
 Processor type: i486 (Intel 80486)
 Processors active: 0 1 2 3
 Primary memory available: 12.00 gigabytes
-Default processor set: 173 tasks, 815 threads, 4 processors
-Load average: 0.63, Mach factor: 3.36
+Default processor set: 166 tasks, 791 threads, 4 processors
+Load average: 0.56, Mach factor: 3.43
 /bin/machine           = unknown
 /usr/bin/oslevel       = unknown
 /bin/universe          = unknown
@@ -138,8 +138,8 @@ configure:3926: checking lex library
 configure:3940: gcc -o conftest -g -O2   conftest.c   >&5
 Undefined symbols for architecture x86_64:
   "_yywrap", referenced from:
-      _yylex in ccnFBgzF.o
-      _main in ccnFBgzF.o
+      _yylex in cc9xY2vT.o
+      _main in cc9xY2vT.o
 ld: symbol(s) not found for architecture x86_64
 collect2: ld returned 1 exit status
 configure:3940: $? = 1
@@ -4198,7 +4198,6 @@ on tanaka-no-iMac.local
 config.status:864: creating Makefile
 config.status:864: creating src/Makefile
 config.status:864: creating config.h
-config.status:1045: config.h is unchanged
 config.status:1093: executing depfiles commands
 
 ## ---------------- ##

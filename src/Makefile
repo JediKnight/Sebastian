@@ -52,7 +52,7 @@ bin_PROGRAMS = Sebastian$(EXEEXT)
 subdir = src
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in \
 	$(top_srcdir)/depcomp $(top_srcdir)/mkinstalldirs \
-	$(top_srcdir)/ylwrap sebastian.c
+	$(top_srcdir)/ylwrap lex.yy.c
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.in
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
@@ -63,7 +63,7 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_Sebastian_OBJECTS = sebastian.$(OBJEXT) sebastian.$(OBJEXT)
+am_Sebastian_OBJECTS = sebastian.$(OBJEXT) lex.yy.$(OBJEXT)
 Sebastian_OBJECTS = $(am_Sebastian_OBJECTS)
 Sebastian_LDADD = $(LDADD)
 DEFAULT_INCLUDES = -I. -I$(top_builddir)
@@ -175,7 +175,7 @@ target_alias =
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
-Sebastian_SOURCES = sebastian.c sebastian.h sebastian.l
+Sebastian_SOURCES = sebastian.c sebastian.h lex.yy.l
 all: all-am
 
 .SUFFIXES:
@@ -260,6 +260,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+include ./$(DEPDIR)/lex.yy.Po
 include ./$(DEPDIR)/sebastian.Po
 
 .c.o:
@@ -412,7 +413,7 @@ distclean-generic:
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
-	-rm -f sebastian.c
+	-rm -f lex.yy.c
 clean: clean-am
 
 clean-am: clean-binPROGRAMS clean-generic mostlyclean-am
