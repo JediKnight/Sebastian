@@ -46,7 +46,7 @@
 #define HAVE_UNISTD_H 1
 
 /* Name of package */
-#define PACKAGE "Sebastian"
+/* #undef PACKAGE */
 
 /* Define to the address where bug reports for this package should be sent. */
 #define PACKAGE_BUGREPORT "bug@bamboo-copter.com"
@@ -70,7 +70,7 @@
 #define STDC_HEADERS 1
 
 /* Version number of package */
-#define VERSION "0.0.1"
+/* #undef VERSION */
 
 /* Define to 1 if `lex' declares `yytext' as a `char *' by default, not a
    `char[]'. */

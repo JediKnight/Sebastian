@@ -3,6 +3,6 @@
 int main()
 {
   printf("Hello, Sir\nWhat are your requirements?\n> ");
-  strpar();
+  request();
   return 0;
 }
