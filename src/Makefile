@@ -32,10 +32,10 @@ am__make_dryrun = \
     esac; \
     test $$am__dry = yes; \
   }
-pkgdatadir = $(datadir)/
-pkgincludedir = $(includedir)/
-pkglibdir = $(libdir)/
-pkglibexecdir = $(libexecdir)/
+pkgdatadir = $(datadir)/Sebastian
+pkgincludedir = $(includedir)/Sebastian
+pkglibdir = $(libdir)/Sebastian
+pkglibexecdir = $(libexecdir)/Sebastian
 am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
 install_sh_DATA = $(install_sh) -c -m 644
 install_sh_PROGRAM = $(install_sh) -c
@@ -85,20 +85,20 @@ am__can_run_installinfo = \
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = 
-AMTAR = 
-AUTOCONF = 
-AUTOHEADER = 
-AUTOMAKE = 
+ACLOCAL = ${SHELL} /Users/tomoaki/Develop.localized/Sebastian/missing --run aclocal-1.12
+AMTAR = $${TAR-tar}
+AUTOCONF = ${SHELL} /Users/tomoaki/Develop.localized/Sebastian/missing --run autoconf
+AUTOHEADER = ${SHELL} /Users/tomoaki/Develop.localized/Sebastian/missing --run autoheader
+AUTOMAKE = ${SHELL} /Users/tomoaki/Develop.localized/Sebastian/missing --run automake-1.12
 AWK = awk
 CC = gcc
-CCDEPMODE = 
+CCDEPMODE = depmode=gcc3
 CFLAGS = -g -O2
 CPP = gcc -E
 CPPFLAGS = 
-CYGPATH_W = 
+CYGPATH_W = echo
 DEFS = -DHAVE_CONFIG_H
-DEPDIR = 
+DEPDIR = .deps
 ECHO_C = \c
 ECHO_N = 
 ECHO_T = 
@@ -109,7 +109,7 @@ INSTALL = /usr/bin/install -c
 INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
-INSTALL_STRIP_PROGRAM = 
+INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 LDFLAGS = 
 LEX = flex
 LEXLIB = -ll
@@ -117,10 +117,10 @@ LEX_OUTPUT_ROOT = lex.yy
 LIBOBJS = 
 LIBS = 
 LTLIBOBJS = 
-MAKEINFO = 
+MAKEINFO = ${SHELL} /Users/tomoaki/Develop.localized/Sebastian/missing --run makeinfo
 MKDIR_P = .././install-sh -c -d
 OBJEXT = o
-PACKAGE = 
+PACKAGE = Sebastian
 PACKAGE_BUGREPORT = bug@bamboo-copter.com
 PACKAGE_NAME = Sebastian
 PACKAGE_STRING = Sebastian 0.0.1
@@ -131,19 +131,17 @@ PATH_SEPARATOR = :
 SET_MAKE = 
 SHELL = /bin/sh
 STRIP = 
-VERSION = 
-YACC = bison -y
-YFLAGS = 
+VERSION = 0.0.1
 abs_builddir = /Users/tomoaki/Develop.localized/Sebastian/src
 abs_srcdir = /Users/tomoaki/Develop.localized/Sebastian/src
 abs_top_builddir = /Users/tomoaki/Develop.localized/Sebastian
 abs_top_srcdir = /Users/tomoaki/Develop.localized/Sebastian
 ac_ct_CC = gcc
-am__include = 
-am__leading_dot = 
+am__include = include
+am__leading_dot = .
 am__quote = 
-am__tar = 
-am__untar = 
+am__tar = $${TAR-tar} chof - "$$tardir"
+am__untar = $${TAR-tar} xf -
 bindir = ${exec_prefix}/bin
 build_alias = 
 builddir = .
@@ -156,16 +154,16 @@ host_alias =
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = 
+install_sh = ${SHELL} /Users/tomoaki/Develop.localized/Sebastian/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
 localstatedir = ${prefix}/var
 mandir = ${datarootdir}/man
-mkdir_p = 
+mkdir_p = $(MKDIR_P)
 oldincludedir = /usr/include
 pdfdir = ${docdir}
-prefix = /usr/local
+prefix = /Users/tomoaki/Develop.localized/Sebastian/work
 program_transform_name = s,x,x,
 psdir = ${docdir}
 sbindir = ${exec_prefix}/sbin
@@ -261,22 +259,22 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
- ./$(DEPDIR)/lex.yy.Po
- ./$(DEPDIR)/sebastian.Po
+include ./$(DEPDIR)/lex.yy.Po
+include ./$(DEPDIR)/sebastian.Po
 
 .c.o:
 	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
 	$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
-	source='$<' object='$@' libtool=no 
-	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
-	$(COMPILE) -c $<
+#	source='$<' object='$@' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
+#	$(COMPILE) -c $<
 
 .c.obj:
 	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ `$(CYGPATH_W) '$<'`
 	$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
-	source='$<' object='$@' libtool=no 
-	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) 
-	$(COMPILE) -c `$(CYGPATH_W) '$<'`
+#	source='$<' object='$@' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
+#	$(COMPILE) -c `$(CYGPATH_W) '$<'`
 
 .l.c:
 	$(am__skiplex) $(SHELL) $(YLWRAP) $< $(LEX_OUTPUT_ROOT).c $@ -- $(LEXCOMPILE)

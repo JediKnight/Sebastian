@@ -3,18 +3,13 @@
 
 AC_PREREQ([2.69])
 AC_INIT([Sebastian], [0.0.1], [bug@bamboo-copter.com])
-AC_CONFIG_SRCDIR([config.h.in])
+AM_INIT_AUTOMAKE([Sebastian], [0.0.1])
+AC_CONFIG_SRCDIR([src/lex.yy.c])
 AC_CONFIG_HEADERS([config.h])
 
 # Checks for programs.
-AC_PROG_AWK
-AC_PROG_YACC
 AC_PROG_CC
 AC_PROG_LEX
-AC_PROG_INSTALL
-AC_PROG_MAKE_SET
-AC_PROG_CPP
-AC_PROG_MKDIR_P
 
 # Checks for libraries.
 
@@ -39,6 +34,3 @@ AC_CHECK_FUNCS([memmove memset strstr])
 AC_CONFIG_FILES([Makefile
                  src/Makefile])
 AC_OUTPUT
-AM_INIT_AUTOMAKE([Sebastian], [0.0.1])
-AC_PROG_LEX
-AC_PROG_YACC
