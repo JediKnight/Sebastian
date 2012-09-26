@@ -5,9 +5,7 @@ ver='0.0.1'
 src='sebastian.c sebastian.h lex.yy.l'
 addr='bug@bamboo-copter.com'
 
-echo "cd $1"
-cd $1
-pwd
+[ -z $1 ] && echo "$0 [target directory]" && exit
 
 function runproc()
 {
@@ -24,6 +22,9 @@ function runproc()
 
     echo " ok"
 }
+
+cd $1
+pwd
 
 make clean >/dev/null 2>&1 &
 runproc $! "make clean"
