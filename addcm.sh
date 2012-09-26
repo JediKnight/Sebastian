@@ -29,17 +29,30 @@ pwd
 make clean >/dev/null 2>&1 &
 runproc $! "make clean"
 
-rm -f configure.in &
-runproc $! "delete configure.in"
+find . -name "aclocal*" -exec rm -rf {} \; &
+runproc $! "delete aclocal*"
 
-rm -f Makefile.am &
-runproc $! "delete Makefile.am"
+find . -name "auto*" -exec rm -rf {} \; &
+runproc $! "delete auto*"
 
-rm -f src/Makefile.am
-runproc $! "delete src/Makefile.am"
+find . -name "config*" -exec rm -rf {} \; &
+runproc $! "delete config*"
 
+find . -name "Makefile*" -exec rm -rf {} \; &
+runproc $! "delete Makefile*"
+
+find . -name "*.log" -exec rm -rf {} \; &
+runproc $! "delete *.log"
+
+exit
 touch INSTALL NEWS README COPYING AUTHORS ChangeLog &
 runproc $! "touch INSTALL NEWS README COPYING AUTHORS ChangeLog"
+
+touch Makefile.am &
+runproc $! "touch Makefile.am"
+
+touch src/Makefile.am &
+runproc $! "touch src/Makefile.am"
 
 autoscan &
 runproc $! "run autoscan"
@@ -53,8 +66,8 @@ runproc $! "add automake directive"
 echo "AC_PROG_LEX" >>configure.in &
 runproc $! "add flex directive"
 
-echo "AC_PROG_YACC" >>configure.in &
-runproc $! "add bison directive"
+#echo "AC_PROG_YACC" >>configure.in &
+#runproc $! "add bison directive"
 
 gsed -i "s|FULL-PACKAGE-NAME|$prog|g" configure.in &
 runproc $! "change package name"
@@ -67,7 +80,6 @@ runproc $! "change bugreport address"
 
 echo "SUBDIRS = src" >Makefile.am &
 runproc $! "add source directory directive"
-
 
 echo "bin_PROGRAMS = $prog" >src/Makefile.am &
 runproc $! "add program name directive"
