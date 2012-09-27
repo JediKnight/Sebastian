@@ -4,8 +4,6 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "mystring.h"
-
-int request();
+int wakeupSebastian();
 
 #endif	/* _SEBASTIAN_ */

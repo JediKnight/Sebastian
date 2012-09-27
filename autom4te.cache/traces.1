@@ -485,13 +485,11 @@ m4trace:configure.in:31: -1- AC_DEFINE_TRACE_LITERAL([realloc])
 m4trace:configure.in:31: -1- m4_pattern_allow([^realloc$])
 m4trace:configure.in:31: -1- AH_OUTPUT([realloc], [/* Define to rpl_realloc if the replacement function should be used. */
 @%:@undef realloc])
-m4trace:configure.in:32: -1- AC_CHECK_FUNCS([memmove memset strstr])
-m4trace:configure.in:32: -1- AH_OUTPUT([HAVE_MEMMOVE], [/* Define to 1 if you have the `memmove\' function. */
-@%:@undef HAVE_MEMMOVE])
+m4trace:configure.in:32: -1- AC_CHECK_FUNCS([memset])
 m4trace:configure.in:32: -1- AH_OUTPUT([HAVE_MEMSET], [/* Define to 1 if you have the `memset\' function. */
 @%:@undef HAVE_MEMSET])
-m4trace:configure.in:32: -1- AH_OUTPUT([HAVE_STRSTR], [/* Define to 1 if you have the `strstr\' function. */
-@%:@undef HAVE_STRSTR])
+m4trace:configure.in:32: -1- AC_DEFINE_TRACE_LITERAL([HAVE_MEMSET])
+m4trace:configure.in:32: -1- m4_pattern_allow([^HAVE_MEMSET$])
 m4trace:configure.in:35: -1- AC_CONFIG_FILES([Makefile
                  src/Makefile])
 m4trace:configure.in:36: -1- AC_SUBST([LIB@&t@OBJS], [$ac_libobjs])

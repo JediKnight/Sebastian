@@ -51,7 +51,7 @@ POST_UNINSTALL = :
 bin_PROGRAMS = Sebastian$(EXEEXT)
 subdir = src
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in \
-	$(top_srcdir)/depcomp $(top_srcdir)/ylwrap lex.yy.c
+	$(top_srcdir)/depcomp $(top_srcdir)/ylwrap sebastian.c
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.in
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
@@ -62,7 +62,7 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_Sebastian_OBJECTS = sebastian.$(OBJEXT) lex.yy.$(OBJEXT)
+am_Sebastian_OBJECTS = main.$(OBJEXT) sebastian.$(OBJEXT)
 Sebastian_OBJECTS = $(am_Sebastian_OBJECTS)
 Sebastian_LDADD = $(LDADD)
 DEFAULT_INCLUDES = -I. -I$(top_builddir)
@@ -85,11 +85,11 @@ am__can_run_installinfo = \
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /Users/tomoaki/Develop.localized/Sebastian/missing --run aclocal-1.12
+ACLOCAL = ${SHELL} /Users/Tomoaki/Develop.localized/Sebastian/missing --run aclocal-1.12
 AMTAR = $${TAR-tar}
-AUTOCONF = ${SHELL} /Users/tomoaki/Develop.localized/Sebastian/missing --run autoconf
-AUTOHEADER = ${SHELL} /Users/tomoaki/Develop.localized/Sebastian/missing --run autoheader
-AUTOMAKE = ${SHELL} /Users/tomoaki/Develop.localized/Sebastian/missing --run automake-1.12
+AUTOCONF = ${SHELL} /Users/Tomoaki/Develop.localized/Sebastian/missing --run autoconf
+AUTOHEADER = ${SHELL} /Users/Tomoaki/Develop.localized/Sebastian/missing --run autoheader
+AUTOMAKE = ${SHELL} /Users/Tomoaki/Develop.localized/Sebastian/missing --run automake-1.12
 AWK = awk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -117,7 +117,7 @@ LEX_OUTPUT_ROOT = lex.yy
 LIBOBJS = 
 LIBS = 
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /Users/tomoaki/Develop.localized/Sebastian/missing --run makeinfo
+MAKEINFO = ${SHELL} /Users/Tomoaki/Develop.localized/Sebastian/missing --run makeinfo
 MKDIR_P = .././install-sh -c -d
 OBJEXT = o
 PACKAGE = Sebastian
@@ -132,10 +132,10 @@ SET_MAKE =
 SHELL = /bin/sh
 STRIP = 
 VERSION = 0.0.1
-abs_builddir = /Users/tomoaki/Develop.localized/Sebastian/src
-abs_srcdir = /Users/tomoaki/Develop.localized/Sebastian/src
-abs_top_builddir = /Users/tomoaki/Develop.localized/Sebastian
-abs_top_srcdir = /Users/tomoaki/Develop.localized/Sebastian
+abs_builddir = /Users/Tomoaki/Develop.localized/Sebastian/src
+abs_srcdir = /Users/Tomoaki/Develop.localized/Sebastian/src
+abs_top_builddir = /Users/Tomoaki/Develop.localized/Sebastian
+abs_top_srcdir = /Users/Tomoaki/Develop.localized/Sebastian
 ac_ct_CC = gcc
 am__include = include
 am__leading_dot = .
@@ -154,7 +154,7 @@ host_alias =
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /Users/tomoaki/Develop.localized/Sebastian/install-sh
+install_sh = ${SHELL} /Users/Tomoaki/Develop.localized/Sebastian/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -163,7 +163,7 @@ mandir = ${datarootdir}/man
 mkdir_p = $(MKDIR_P)
 oldincludedir = /usr/include
 pdfdir = ${docdir}
-prefix = /Users/tomoaki/Develop.localized/Sebastian/work
+prefix = /Users/Tomoaki/Develop.localized/Sebastian/work
 program_transform_name = s,x,x,
 psdir = ${docdir}
 sbindir = ${exec_prefix}/sbin
@@ -174,7 +174,7 @@ target_alias =
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
-Sebastian_SOURCES = sebastian.c sebastian.h lex.yy.l
+Sebastian_SOURCES = main.c sebastian.h sebastian.l
 all: all-am
 
 .SUFFIXES:
@@ -259,7 +259,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-include ./$(DEPDIR)/lex.yy.Po
+include ./$(DEPDIR)/main.Po
 include ./$(DEPDIR)/sebastian.Po
 
 .c.o:
@@ -412,7 +412,7 @@ distclean-generic:
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
-	-rm -f lex.yy.c
+	-rm -f sebastian.c
 clean: clean-am
 
 clean-am: clean-binPROGRAMS clean-generic mostlyclean-am

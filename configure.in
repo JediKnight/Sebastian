@@ -4,7 +4,7 @@
 AC_PREREQ([2.69])
 AC_INIT([Sebastian], [0.0.1], [bug@bamboo-copter.com])
 AM_INIT_AUTOMAKE([Sebastian], [0.0.1])
-AC_CONFIG_SRCDIR([src/lex.yy.c])
+AC_CONFIG_SRCDIR([src/main.c])
 AC_CONFIG_HEADERS([config.h])
 
 # Checks for programs.
@@ -29,7 +29,7 @@ AC_TYPE_UINT8_T
 # Checks for library functions.
 AC_FUNC_MALLOC
 AC_FUNC_REALLOC
-AC_CHECK_FUNCS([memmove memset strstr])
+AC_CHECK_FUNCS([memset])
 
 AC_CONFIG_FILES([Makefile
                  src/Makefile])
