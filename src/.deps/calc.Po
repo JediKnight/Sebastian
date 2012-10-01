@@ -1,5 +1,5 @@
-sebastian.o sebastian.o: sebastian.c /usr/include/stdio.h \
-  /usr/include/sys/cdefs.h /usr/include/sys/_symbol_aliasing.h \
+calc.o calc.o: calc.c /usr/include/stdio.h /usr/include/sys/cdefs.h \
+  /usr/include/sys/_symbol_aliasing.h \
   /usr/include/sys/_posix_availability.h /usr/include/Availability.h \
   /usr/include/AvailabilityInternal.h /usr/include/_types.h \
   /usr/include/sys/_types.h /usr/include/machine/_types.h \
@@ -16,7 +16,7 @@ sebastian.o sebastian.o: sebastian.c /usr/include/stdio.h \
   /usr/include/sys/_endian.h /usr/include/libkern/_OSByteOrder.h \
   /usr/include/libkern/i386/_OSByteOrder.h /usr/include/alloca.h \
   /usr/include/machine/types.h /usr/include/i386/types.h \
-  /usr/include/i386/_types.h main.h /usr/include/unistd.h \
+  /usr/include/i386/_types.h calc.tab.h /usr/include/unistd.h \
   /usr/include/sys/unistd.h /usr/include/sys/select.h \
   /usr/include/sys/_select.h
 
@@ -94,7 +94,7 @@ sebastian.o sebastian.o: sebastian.c /usr/include/stdio.h \
 
 /usr/include/i386/_types.h:
 
-main.h:
+calc.tab.h:
 
 /usr/include/unistd.h:
 

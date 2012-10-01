@@ -1,2 +1,2 @@
 bin_PROGRAMS = Sebastian
-Sebastian_SOURCES = main.c sebastian.h sebastian.l
+Sebastian_SOURCES = main.c calc.y calc.l sebastian.l
