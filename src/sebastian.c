@@ -1,38 +1,41 @@
 #include <errno.h>
+#include <signal.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <unistd.h>
-
-#include <sys/param.h>
-
-
-#include "sebastian.h"
 
 //TODO: sebascan
 
+void mainLoop(int argc, char **argv, char **envp)
+{
+  while(1)
+    {
+      fprintf(stdout, "なんやかんや\n");
+      sleep(1);
+    }
+}
+
+void sigHandler(int signo)
+{
+  
+}
+
 int main(int argc, char **argv, char **envp)
 {
-  pid_t pid;
-  char *ext;
-  char path[10];
-
-  if(getcwd(path, sizeof(path) / sizeof(path)) == NULL)
+  if (signal(p_signame， SigHandler) == SIG_ERR) 
     {
-      perror("getpwd:");
-      return -1;
+      printf('シグナルハンドラが設定できんぜよ\n');
+      exit(1);
+  }
+
+  if(daemon(0, 0) == 0)
+    {
+      mainLoop(argc, argv, envp);
     }
 
-  if((pid = fork()) < 0)
+  else
     {
-      perror("fork:");
-      return -1;
+      fprintf(stdout, "daemon: %d", errno);
     }
-
-  printf("%s\n", path);
-  
-  execlp("php", "php", "test.php", NULL);
-  exit(-1);
 
   return 0;
 }
