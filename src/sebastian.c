@@ -34,7 +34,7 @@ int main(int argc, char **argv, char **envp)
 
   else
     {
-      fprintf(stdout, "daemon: %d", errno);
+      fprintf(stdout, "");
     }
 
   return 0;
