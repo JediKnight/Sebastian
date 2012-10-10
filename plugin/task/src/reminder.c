@@ -1,10 +1,18 @@
 #include <math.h>
+#include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
 #include <unistd.h>
 
-enum { YEAR = 0, MONTH, DAY, HOUR, MINUTE, SECOND };
+#include "reminder.h"
+
+enum { YEAR = 0, MONTH, DAY, HOUR, MINUTE, SECOND, ON, OFF };
+
+#define MSGSIZ 1024
+int alrm;
+char mesg[MSGSIZ];
 
 int inputLimit(int type)
 {
@@ -20,17 +28,9 @@ int inputLimit(int type)
       break;
 
     case MONTH:
-      break;
-
     case DAY:
-      break;
-
     case HOUR:
-      break;
-
     case MINUTE:
-      break;
-
     case SECOND:
       break;
 
@@ -40,49 +40,41 @@ int inputLimit(int type)
     }
 
   system("stty raw");
+  system("stty -echo");
+
   for(i = l_lmt -1; i >= 0;)
     {
       c = fgetc(stdin);
       if('0' <= c && '9' >= c)
 	{
-/* 	  if(c_lmt > c || v_lmt >= v) */
-/* 	    { */
-/* 	      printf("%c", c); */
-/* 	    } */
-/* 	  else */
-/* 	    { */
-/* 	      printf("0%c", c); */
-/* 	    } */
 	  printf("%c", c);
 	  v += (c - '0') * (int)pow((double)10, (double)i);
 	  i--;
 	}
+      
+      else if('q' == c)
+	{
+	  exit(EXIT_FAILURE);
+	}
+
+      else if('/' == c || ' ' == c || ':' == c)
+	{
+	  v /= 10;
+	  break;
+	}
     }
+
+  system("stty echo");
   system("stty -raw");
   return v;
-}
-
-void signalHander(int signo)
-{
-  fprintf(stdout, "hogehogedayo");
-}
-
-void setSignal(int type)
-{
-  if(signal(type, signalHander) == SIG_ERR)
-    {
-      perror("signal");
-      exit(EXIT_FAILURE);
-    }
 }
 
 void initDate()
 {
   time_t tm_n, tm_c;
   struct tm stm;
-  int tm_wait;
+  int w;
 
-  setSignal(SIGALRM);
   stm.tm_year = inputLimit(YEAR) - 1900;
   printf("/");
   stm.tm_mon  = inputLimit(MONTH) - 1;
@@ -99,17 +91,33 @@ void initDate()
   tm_n = mktime(&stm);
   time(&tm_c);
 
-  if((tm_wait = difftime(tm_n, tm_c)) <= 0)
+  if((w = difftime(tm_n, tm_c)) <= 0)
     {
-      fprintf(stdout, "指定時間が現在時刻よりなんやかんかや");
-      exit(1);
+      fprintf(stderr, "指定時間が現在時刻よりなんやかんかや:%d\n", w);
+      exit(EXIT_FAILURE);
     }
 
-  alarm(tm_wait);
+  fprintf(stdout, "現在時刻：%s", ctime(&tm_c));
+  fprintf(stdout, "指定時刻：%s", ctime(&tm_n));
+  fprintf(stdout, "%d秒後に実行", w);
+  alrm = w;
 }
 
-void mainLoop()
+void initMesg()
 {
+  memset(mesg, '\0', MSGSIZ);
+  
+}
+
+void init()
+{
+  initDate();
+  initMesg();
+}
+
+void child()
+{
+  alarm(alrm);
   for(;;)
     sleep(1);
 
@@ -119,23 +127,10 @@ void mainLoop()
 int main()
 {
   pid_t pid;
+  int status;
 
-  if((pid = fork()) > 0)
-    {
-      perror("fork");
-      exit(EXIT_FAILURE);
-    }
-
-  else if(pid == 0)
-    {
-      initDate();
-      mainLoop();
-    }
-
-  else
-    {
-      exit(EXIT_SUCCESS);
-    }
-
+  setSignal(SIGALRM);
+  init();
+  forkc(child, 0);
   return 0;
 }
