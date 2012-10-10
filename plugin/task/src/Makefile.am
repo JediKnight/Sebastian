@@ -1,3 +1,3 @@
 bin_PROGRAMS = Tasks
-Tasks_SOURCES = reminder.c forkc.c signalc.c
+Tasks_SOURCES = main.c forkc.c
 Tasks_LDADD = -lcurses

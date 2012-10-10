@@ -62,8 +62,7 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_Tasks_OBJECTS = reminder.$(OBJEXT) forkc.$(OBJEXT) \
-	signalc.$(OBJEXT)
+am_Tasks_OBJECTS = main.$(OBJEXT) forkc.$(OBJEXT)
 Tasks_OBJECTS = $(am_Tasks_OBJECTS)
 Tasks_DEPENDENCIES =
 DEFAULT_INCLUDES = -I. -I$(top_builddir)
@@ -84,11 +83,11 @@ am__can_run_installinfo = \
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /Users/tomoaki/task/missing --run aclocal-1.12
+ACLOCAL = ${SHELL} /Users/tomoaki/Develop.localized/Sebastian/plugin/task/missing --run aclocal-1.12
 AMTAR = $${TAR-tar}
-AUTOCONF = ${SHELL} /Users/tomoaki/task/missing --run autoconf
-AUTOHEADER = ${SHELL} /Users/tomoaki/task/missing --run autoheader
-AUTOMAKE = ${SHELL} /Users/tomoaki/task/missing --run automake-1.12
+AUTOCONF = ${SHELL} /Users/tomoaki/Develop.localized/Sebastian/plugin/task/missing --run autoconf
+AUTOHEADER = ${SHELL} /Users/tomoaki/Develop.localized/Sebastian/plugin/task/missing --run autoheader
+AUTOMAKE = ${SHELL} /Users/tomoaki/Develop.localized/Sebastian/plugin/task/missing --run automake-1.12
 AWK = awk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -113,7 +112,7 @@ LDFLAGS =
 LIBOBJS =  ${LIBOBJDIR}mktime$U.o
 LIBS = -lcurses 
 LTLIBOBJS =  ${LIBOBJDIR}mktime$U.lo
-MAKEINFO = ${SHELL} /Users/tomoaki/task/missing --run makeinfo
+MAKEINFO = ${SHELL} /Users/tomoaki/Develop.localized/Sebastian/plugin/task/missing --run makeinfo
 MKDIR_P = .././install-sh -c -d
 OBJEXT = o
 PACKAGE = Tasks
@@ -128,10 +127,10 @@ SET_MAKE =
 SHELL = /bin/sh
 STRIP = 
 VERSION = 0.0.2
-abs_builddir = /Users/tomoaki/task/src
-abs_srcdir = /Users/tomoaki/task/src
-abs_top_builddir = /Users/tomoaki/task
-abs_top_srcdir = /Users/tomoaki/task
+abs_builddir = /Users/tomoaki/Develop.localized/Sebastian/plugin/task/src
+abs_srcdir = /Users/tomoaki/Develop.localized/Sebastian/plugin/task/src
+abs_top_builddir = /Users/tomoaki/Develop.localized/Sebastian/plugin/task
+abs_top_srcdir = /Users/tomoaki/Develop.localized/Sebastian/plugin/task
 ac_ct_CC = gcc
 am__include = include
 am__leading_dot = .
@@ -150,7 +149,7 @@ host_alias =
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /Users/tomoaki/task/install-sh
+install_sh = ${SHELL} /Users/tomoaki/Develop.localized/Sebastian/plugin/task/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -159,7 +158,7 @@ mandir = ${datarootdir}/man
 mkdir_p = $(MKDIR_P)
 oldincludedir = /usr/include
 pdfdir = ${docdir}
-prefix = /Users/tomoaki/task/test
+prefix = /Users/tomoaki/Develop.localized/Sebastian/plugin/task/test
 program_transform_name = s,x,x,
 psdir = ${docdir}
 sbindir = ${exec_prefix}/sbin
@@ -170,7 +169,7 @@ target_alias =
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
-Tasks_SOURCES = reminder.c forkc.c signalc.c
+Tasks_SOURCES = main.c forkc.c
 Tasks_LDADD = -lcurses
 all: all-am
 
@@ -257,8 +256,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 include ./$(DEPDIR)/forkc.Po
-include ./$(DEPDIR)/reminder.Po
-include ./$(DEPDIR)/signalc.Po
+include ./$(DEPDIR)/main.Po
 
 .c.o:
 	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
