@@ -51,7 +51,7 @@ POST_UNINSTALL = :
 bin_PROGRAMS = Sebastian$(EXEEXT)
 subdir = src
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in \
-	$(top_srcdir)/depcomp $(top_srcdir)/ylwrap calc.c sebastian.c
+	$(top_srcdir)/depcomp
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.in
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
@@ -62,10 +62,10 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_Sebastian_OBJECTS = main.$(OBJEXT) calc.$(OBJEXT) calc.$(OBJEXT) \
-	sebastian.$(OBJEXT)
+am_Sebastian_OBJECTS = main.$(OBJEXT) config.$(OBJEXT) forkc.$(OBJEXT) \
+	notify.$(OBJEXT) scandir.$(OBJEXT)
 Sebastian_OBJECTS = $(am_Sebastian_OBJECTS)
-Sebastian_LDADD = $(LDADD)
+Sebastian_DEPENDENCIES =
 DEFAULT_INCLUDES = -I. -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -74,11 +74,6 @@ COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CCLD = $(CC)
 LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
-LEXCOMPILE = $(LEX) $(AM_LFLAGS) $(LFLAGS)
-YLWRAP = $(top_srcdir)/ylwrap
-am__yacc_c2h = sed -e s/cc$$/hh/ -e s/cpp$$/hpp/ -e s/cxx$$/hxx/ \
-		   -e s/c++$$/h++/ -e s/c$$/h/
-YACCCOMPILE = $(YACC) $(AM_YFLAGS) $(YFLAGS)
 SOURCES = $(Sebastian_SOURCES)
 DIST_SOURCES = $(Sebastian_SOURCES)
 am__can_run_installinfo = \
@@ -115,9 +110,6 @@ INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 LDFLAGS = 
-LEX = flex
-LEXLIB = -ll
-LEX_OUTPUT_ROOT = lex.yy
 LIBOBJS = 
 LIBS = 
 LTLIBOBJS = 
@@ -125,7 +117,7 @@ MAKEINFO = ${SHELL} /Users/Tomoaki/Develop.localized/Sebastian/missing --run mak
 MKDIR_P = .././install-sh -c -d
 OBJEXT = o
 PACKAGE = Sebastian
-PACKAGE_BUGREPORT = bug@bamboo-copter.com
+PACKAGE_BUGREPORT = bug@sebas-chan.org
 PACKAGE_NAME = Sebastian
 PACKAGE_STRING = Sebastian 0.0.1
 PACKAGE_TARNAME = sebastian
@@ -136,8 +128,6 @@ SET_MAKE =
 SHELL = /bin/sh
 STRIP = 
 VERSION = 0.0.1
-YACC = bison -y
-YFLAGS = 
 abs_builddir = /Users/Tomoaki/Develop.localized/Sebastian/src
 abs_srcdir = /Users/Tomoaki/Develop.localized/Sebastian/src
 abs_top_builddir = /Users/Tomoaki/Develop.localized/Sebastian
@@ -169,7 +159,7 @@ mandir = ${datarootdir}/man
 mkdir_p = $(MKDIR_P)
 oldincludedir = /usr/include
 pdfdir = ${docdir}
-prefix = /Users/Tomoaki/Develop.localized/Sebastian/work
+prefix = /Users/Tomoaki/Develop.localized/Sebastian/test
 program_transform_name = s,x,x,
 psdir = ${docdir}
 sbindir = ${exec_prefix}/sbin
@@ -180,11 +170,12 @@ target_alias =
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
-Sebastian_SOURCES = main.c calc.y calc.l sebastian.l
+Sebastian_SOURCES = main.c config.c forkc.c notify.c scandir.c
+Sebastian_LDADD = -lcurses
 all: all-am
 
 .SUFFIXES:
-.SUFFIXES: .c .l .o .obj .y
+.SUFFIXES: .c .o .obj
 $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
@@ -265,9 +256,11 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-include ./$(DEPDIR)/calc.Po
+include ./$(DEPDIR)/config.Po
+include ./$(DEPDIR)/forkc.Po
 include ./$(DEPDIR)/main.Po
-include ./$(DEPDIR)/sebastian.Po
+include ./$(DEPDIR)/notify.Po
+include ./$(DEPDIR)/scandir.Po
 
 .c.o:
 	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -282,12 +275,6 @@ include ./$(DEPDIR)/sebastian.Po
 #	source='$<' object='$@' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
 #	$(COMPILE) -c `$(CYGPATH_W) '$<'`
-
-.l.c:
-	$(am__skiplex) $(SHELL) $(YLWRAP) $< $(LEX_OUTPUT_ROOT).c $@ -- $(LEXCOMPILE)
-
-.y.c:
-	$(am__skipyacc) $(SHELL) $(YLWRAP) $< y.tab.c $@ y.tab.h `echo $@ | $(am__yacc_c2h)` y.output $*.output -- $(YACCCOMPILE)
 
 ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	list='$(SOURCES) $(HEADERS) $(LISP) $(TAGS_FILES)'; \
@@ -422,8 +409,6 @@ distclean-generic:
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
-	-rm -f calc.c
-	-rm -f sebastian.c
 clean: clean-am
 
 clean-am: clean-binPROGRAMS clean-generic mostlyclean-am

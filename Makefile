@@ -51,7 +51,7 @@ subdir = .
 DIST_COMMON = README $(am__configure_deps) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in $(srcdir)/config.h.in \
 	$(top_srcdir)/configure AUTHORS COPYING ChangeLog INSTALL NEWS \
-	depcomp install-sh missing ylwrap
+	depcomp install-sh missing
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.in
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
@@ -153,9 +153,6 @@ INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 LDFLAGS = 
-LEX = flex
-LEXLIB = -ll
-LEX_OUTPUT_ROOT = lex.yy
 LIBOBJS = 
 LIBS = 
 LTLIBOBJS = 
@@ -163,7 +160,7 @@ MAKEINFO = ${SHELL} /Users/Tomoaki/Develop.localized/Sebastian/missing --run mak
 MKDIR_P = ./install-sh -c -d
 OBJEXT = o
 PACKAGE = Sebastian
-PACKAGE_BUGREPORT = bug@bamboo-copter.com
+PACKAGE_BUGREPORT = bug@sebas-chan.org
 PACKAGE_NAME = Sebastian
 PACKAGE_STRING = Sebastian 0.0.1
 PACKAGE_TARNAME = sebastian
@@ -174,8 +171,6 @@ SET_MAKE =
 SHELL = /bin/sh
 STRIP = 
 VERSION = 0.0.1
-YACC = bison -y
-YFLAGS = 
 abs_builddir = /Users/Tomoaki/Develop.localized/Sebastian
 abs_srcdir = /Users/Tomoaki/Develop.localized/Sebastian
 abs_top_builddir = /Users/Tomoaki/Develop.localized/Sebastian
@@ -207,7 +202,7 @@ mandir = ${datarootdir}/man
 mkdir_p = $(MKDIR_P)
 oldincludedir = /usr/include
 pdfdir = ${docdir}
-prefix = /Users/Tomoaki/Develop.localized/Sebastian/work
+prefix = /Users/Tomoaki/Develop.localized/Sebastian/test
 program_transform_name = s,x,x,
 psdir = ${docdir}
 sbindir = ${exec_prefix}/sbin
