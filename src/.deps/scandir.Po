@@ -4,7 +4,8 @@ scandir.o scandir.o: scandir.c /usr/include/dirent.h \
   /usr/include/sys/_posix_availability.h /usr/include/machine/_types.h \
   /usr/include/i386/_types.h /usr/include/sys/dirent.h \
   /usr/include/Availability.h /usr/include/AvailabilityInternal.h \
-  /usr/include/stdlib.h /usr/include/sys/wait.h /usr/include/sys/signal.h \
+  /usr/include/errno.h /usr/include/sys/errno.h /usr/include/stdlib.h \
+  /usr/include/sys/wait.h /usr/include/sys/signal.h \
   /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h \
   /usr/include/i386/signal.h /usr/include/i386/_structs.h \
   /usr/include/sys/_structs.h /usr/include/machine/_structs.h \
@@ -14,7 +15,8 @@ scandir.o scandir.o: scandir.c /usr/include/dirent.h \
   /usr/include/libkern/i386/_OSByteOrder.h /usr/include/alloca.h \
   /usr/include/machine/types.h /usr/include/i386/types.h \
   /usr/include/i386/_types.h /usr/include/stdio.h \
-  /usr/include/secure/_stdio.h /usr/include/secure/_common.h
+  /usr/include/secure/_stdio.h /usr/include/secure/_common.h \
+  /usr/include/sys/stat.h /usr/include/time.h /usr/include/_structs.h
 
 /usr/include/dirent.h:
 
@@ -37,6 +39,10 @@ scandir.o scandir.o: scandir.c /usr/include/dirent.h \
 /usr/include/Availability.h:
 
 /usr/include/AvailabilityInternal.h:
+
+/usr/include/errno.h:
+
+/usr/include/sys/errno.h:
 
 /usr/include/stdlib.h:
 
@@ -83,3 +89,9 @@ scandir.o scandir.o: scandir.c /usr/include/dirent.h \
 /usr/include/secure/_stdio.h:
 
 /usr/include/secure/_common.h:
+
+/usr/include/sys/stat.h:
+
+/usr/include/time.h:
+
+/usr/include/_structs.h:

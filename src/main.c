@@ -46,6 +46,8 @@ void scanChild()
 {
   int i;
   scan("/Users/tomoaki/Develop.localized/Sebastian/plugin");
+  for(;;)
+    sleep(1);
   exit(EXIT_SUCCESS);
 }
 
